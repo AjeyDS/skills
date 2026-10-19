@@ -29,13 +29,30 @@ in the news that no CLI lists yet is worth noting but can't be delegated to.
 
 If the agent can spawn subagents, give each target to a cheap one with web
 search and launch them together; the main model weighs the results. Give
-each scout today's date, a budget of about five searches or fetches, and
-this return shape:
+each scout today's date, a hard budget (about five searches or fetches per
+model), and these rules, which the first real run showed cheap scouts need
+spelled out:
+
+- **Fetch the Artificial Analysis model page directly**
+  (`artificialanalysis.ai/models/<slug>`, e.g. `.../models/kimi-k3`;
+  search for the URL only if that 404s) instead of quoting AA numbers from
+  news or aggregator snippets. This counts as one of the budgeted calls and
+  comes first. The page title names the effort setting AA ran, e.g.
+  "Claude Haiku 5.5 (max)"; secondary reports often get it wrong.
+- **Every AA number carries its Intelligence Index version and effort
+  setting** (e.g. "v4.3.2, max"), copied from the AA page. A score with no
+  version is written as "version not shown" and is not usable for
+  comparison.
+- **The budget is a hard stop.** A failed fetch counts. When it runs out,
+  return what you have and list the rest under "Not found".
+
+Return shape:
 
 ```
 Model: <exact name and API slug>
 Released: <date, with source>  Status: announced | GA | preview | rumor
 Where: <which of the user's CLIs/plans expose it, if stated>
+AA: <Intelligence Index score, index version, effort, page URL> or "no AA page"
 Benchmarks: <name, version, score, effort/harness, source, vendor-reported or independent>
 Pricing / tokens: <per-token price, and output-token use vs predecessor if reported>
 Known issues: <early complaints, regressions, safety or monitorability notes>

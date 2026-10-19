@@ -45,7 +45,7 @@ tests, not revisions of one number.
 - **Lane-changing finding: Gemini 3.7 Flash was deprecated 2026-10-08 and its requests now route to Gemini 3.8 Flash** (Gemini API changelog). The Antigravity light-touch tier was earned on 3.7 Flash and does not transfer: treat any Antigravity Flash lane as 3.8 Flash on full review until it has its own rounds.
 - `gpt-reserve` is not a model. It is the ID behind "Luna Reserve", a post-quota fallback (GPT-5.6 Luna usage) on selected personal Plus/Pro accounts. Nothing to profile.
 - No Grok newer than 4.7 on x.ai/news through 2026-10-19. Codex CLI 0.163.0 shipped 2026-10-15 (local is 0.159.3); 0.161.0 reportedly made GPT-6.1 Sol the default.
-- Several new AA scores arrived without an index version (Argon 53, Sonnet 5.5 56, Haiku 5.5 43). They are probably v4.3.2 but unconfirmed: check before setting them beside the v4.3.2 table.
+- AA versions confirmed the same day by fetching each AA model page directly: Gemini 4 Argon 53 (high), Claude Sonnet 5.5 56 (max), Claude Haiku 5.5 43 (max; a scout had reported "default"), all **v4.3.2**, so they sit on the same scale as the current-generation table. **Sonnet 5.5's 56 is the highest v4.3.2 composite in this file**, above Fable 5.1 and Astra (53). Sonnet's AA Coding Agent Index 68 is not shown on its AA page and stays unconfirmed.
 
 **2026-10-10 — GPT-6.1 Sol, Project M desktop branch 0 "trim" (Tasks 1-9 of 16, xhigh, in-session `codex exec`; Opus 5.5 reviewer per task in a scratch worktree): strong at subtraction, two judgment slips, limit hit mid-task.**
 - Clean red/green on every TDD step; stopped correctly on `quick_tailor.DEFAULTS` (audit was wrong, tests use it). Golden-file discipline on the python-docx → stdlib rewrite caught its own first draft.
@@ -934,8 +934,9 @@ execution path unclear.
   62.3; Terminal-Bench 4.0 57.4 / 58.2 / 66.4; AutomationBench 51.3 / 41.4
   / 42.5; Vals Index 68.9 / 63.1 / 67.0. It leads on repo-scale SWE and
   automation and trails on terminal and frontier SWE work.
-- AA Intelligence Index 53 (High), index version unconfirmed (secondary).
-  AA-Omniscience hallucination rate 15% (secondary), low if it holds.
+- **AA Intelligence Index v4.3.2: 53 at high** (AA model page, fetched
+  2026-10-19), level with Fable 5.1 and Astra. AA-Omniscience
+  hallucination rate 15% (secondary), low if it holds.
 - $2 / $10 per MTok introductory, rising to $4 / $20 around Dec 1 (sources
   differ on the exact date). 1M context.
 - Fit: a candidate for the Antigravity "Pro" slot (3.1 Pro has been
@@ -1292,7 +1293,9 @@ from every model in this table** — and none of them can be ranked against
 each other.
 
 **Other v4.3.2 index scores known (no per-eval breakdown on AA yet):**
-Grok 4.7 (xhigh) 46, Grok 4.6 (high) 44 — see the Cursor section.
+Grok 4.7 (xhigh) 46, Grok 4.6 (high) 44 — see the Cursor section. Added
+2026-10-19: Claude Sonnet 5.5 (max) 56, Gemini 4 Argon (high) 53, Kimi K3
+44, Claude Haiku 5.5 (max) 43, GPT-6 Luna (max) 38.
 
 **The one-line read:** Astra and Fable 5.1 are level on the composite and
 on coding, and they split cleanly by task shape. **Astra leads on
@@ -1310,16 +1313,17 @@ legacy.
 | | Opus 5.5 | Sonnet 5.5 | Haiku 5.5 |
 |---|---|---|---|
 | Terminal-Bench 4.0 | 66.4% (vendor; Google's Argon table shows the same figure) | 70.6% max (vendor, unverified) / 64% max (AA) | 29% xhigh (AA) |
-| AA Intelligence Index | not found | 56 max, 47 high (version unconfirmed) | 43 default (version unconfirmed) |
+| AA Intelligence Index | not found | **v4.3.2: 56 at max** (AA page; "max with fallback" config); 47 high (secondary) | **v4.3.2: 43 at max** (AA page) |
 | Other | FrontierCode v1.1 54.4 vs Astra 53.3; GDPval-AA v2.1 1846 vs Astra 1542; Terminal-Bench-Science 58.7 vs Astra 64.6 (all vendor) | SWE-Bench Pro 81.3 (vendor, secondary); AA Coding Agent Index 68 (secondary) | no vendor coding numbers found |
 | Price /MTok | $4 / $20 | $2 / $10 | $0.10 / $0.50 (prompts up to 100K) |
 
 - Anthropic places Opus 5.5 at roughly Fable 5.1's level on most tasks, at
   well under half Fable 5.1's per-token price, and Sonnet 5.5 within about
   2 points of Opus 5.5 on coding.
-- If Sonnet 5.5's AA Coding Agent Index 68 is on v4.3.2, it sits above
-  Fable 5.1 and Astra (62) in the table above. Confirm the version before
-  routing on it.
+- Sonnet 5.5's v4.3.2 composite (56) is above Fable 5.1 and Astra (53).
+  Its reported AA Coding Agent Index of 68 (secondary) would also lead the
+  table above (62), but that figure is not on its AA page: confirm it
+  before routing on it.
 - Haiku 5.5 uses a newer tokenizer (about 30% more tokens than Haiku 4.5
   for the same text), so compare cost per task, not per token.
 - For review tiering with Claude as reviewer: Opus 5.5 as finder and
