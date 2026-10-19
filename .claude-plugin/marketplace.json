@@ -1,0 +1,57 @@
+{
+  "name": "ajeyds-skills",
+  "owner": {
+    "name": "AjeyDS",
+    "url": "https://github.com/AjeyDS"
+  },
+  "metadata": {
+    "description": "Agent Skills by AjeyDS for coding, research and learning work."
+  },
+  "plugins": [
+    {
+      "name": "engineering",
+      "description": "Code-quality audits, agent-ready repo docs, open-source reuse, plan freshness checks, and delegating work to other coding agents.",
+      "source": "./",
+      "strict": false,
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["code-review", "agents", "delegation", "planning", "ui-ux"],
+      "skills": [
+        "./skills/engineering/ai-slop-detector",
+        "./skills/engineering/bootstrap-system-md",
+        "./skills/engineering/external-agent-delegation",
+        "./skills/engineering/frankenstein-code",
+        "./skills/engineering/freshness-check",
+        "./skills/engineering/goal-anchored-delegation",
+        "./skills/engineering/ui-ux-audit"
+      ]
+    },
+    {
+      "name": "research",
+      "description": "Root-cause investigation of claims and metrics, plus a raw-source collection and synthesis pipeline.",
+      "source": "./",
+      "strict": false,
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["research", "causal-inference", "root-cause", "sources"],
+      "skills": [
+        "./skills/research/causal-root-cause-analyst",
+        "./skills/research/saving-raw-sources",
+        "./skills/research/synthesize-research-insights"
+      ]
+    },
+    {
+      "name": "learning",
+      "description": "Researched study-note PDFs and rehearsable talk tracks for explaining your own projects.",
+      "source": "./",
+      "strict": false,
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["study-notes", "pdf", "interview-prep", "learning"],
+      "skills": [
+        "./skills/learning/study-notes-pdf",
+        "./skills/learning/project-talk-track"
+      ]
+    }
+  ]
+}

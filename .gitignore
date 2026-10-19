@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+dist/
+*.skill
+*.zip
+
+# Private per-user overrides
+*.local.md

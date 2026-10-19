@@ -1,0 +1,18 @@
+name: Attach skill zips to release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  zips:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/package.sh
+      - run: gh release upload "${{ github.event.release.tag_name }}" dist/*.zip --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}
