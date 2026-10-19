@@ -7,11 +7,12 @@
 > the same shape and let it replace these entries. "Project M" is the author's app
 > where most rounds ran.
 
-Covers four agents: Codex CLI (GPT-6 Astra, GPT-5.6 Sol/Terra/Luna),
-Antigravity CLI (Gemini 3.7 Flash and siblings), Cursor CLI (Grok 4.6 and
-4.7), and the Claude baseline they're measured against (Fable 5.1, Opus 5).
+Covers four agents: Codex CLI (GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna,
+GPT-5.6 Sol/Terra/Luna), Antigravity CLI (Gemini 3.8 Flash, Gemini 4 Argon,
+and the retired 3.7 Flash record), Cursor CLI (Grok 4.6 and 4.7), and the
+Claude baseline they're measured against (Fable 5.1, Opus/Sonnet/Haiku 5.5).
 
-Last researched: **2026-10-05 (GPT-6.1 Sol Project M phase 3 round added)** / **2026-10-01 (GPT-6.1 Sol M3a round added to the Codex correction log)** / **2026-09-21 (Grok 4.7 added to the Cursor section on its
+Last researched: **2026-10-19 (model refresh: GPT-6 Luna, GPT-Reserve, Gemini 3.8 Flash, Gemini 4 Argon, Claude 5.5 family, other Cursor-listed models; Gemini 3.7 Flash found deprecated)** / **2026-10-05 (GPT-6.1 Sol Project M phase 3 round added)** / **2026-10-01 (GPT-6.1 Sol M3a round added to the Codex correction log)** / **2026-09-21 (Grok 4.7 added to the Cursor section on its
 release day — partial data, re-check within a week)** / **2026-09-20 (GPT-6
 Astra added to the Codex section;
 Claude Fable 5.1 added to the Claude baseline; AA Intelligence Index
@@ -38,6 +39,13 @@ Terminal-Bench "2.1" vs "4.0" and GDPval-AA "v2" vs "v2.1" are different
 tests, not revisions of one number.
 
 **Correction log (newest first):**
+
+**2026-10-19 — model refresh (CLI catalog diff + six Haiku-tier web scouts). Benchmark research only; no delegation rounds.**
+- Started from `codex debug models` (codex-cli 0.159.3) and `cursor-agent models` (2026.10.12). Slugs not covered here: `gpt-6-luna`, `gpt-reserve` (hidden), `gemini-3.8-flash`, `gemini-4-argon`, the Claude 5.5 family (thin), and out-of-lane `kimi-k3`, `kimi-k2.7-code`, `glm-5.2`, `muse-spark-1.3`, `muse-wonder-1.0`.
+- **Lane-changing finding: Gemini 3.7 Flash was deprecated 2026-10-08 and its requests now route to Gemini 3.8 Flash** (Gemini API changelog). The Antigravity light-touch tier was earned on 3.7 Flash and does not transfer: treat any Antigravity Flash lane as 3.8 Flash on full review until it has its own rounds.
+- `gpt-reserve` is not a model. It is the ID behind "Luna Reserve", a post-quota fallback (GPT-5.6 Luna usage) on selected personal Plus/Pro accounts. Nothing to profile.
+- No Grok newer than 4.7 on x.ai/news through 2026-10-19. Codex CLI 0.163.0 shipped 2026-10-15 (local is 0.159.3); 0.161.0 reportedly made GPT-6.1 Sol the default.
+- Several new AA scores arrived without an index version (Argon 53, Sonnet 5.5 56, Haiku 5.5 43). They are probably v4.3.2 but unconfirmed: check before setting them beside the v4.3.2 table.
 
 **2026-10-10 — GPT-6.1 Sol, Project M desktop branch 0 "trim" (Tasks 1-9 of 16, xhigh, in-session `codex exec`; Opus 5.5 reviewer per task in a scratch worktree): strong at subtraction, two judgment slips, limit hit mid-task.**
 - Clean red/green on every TDD step; stopped correctly on `quick_tailor.DEFAULTS` (audit was wrong, tests use it). Golden-file discipline on the python-docx → stdlib rewrite caught its own first draft.
@@ -598,6 +606,33 @@ remain selectable:
   one of these, the run predates the current generation. `gpt-5.4` and
   `gpt-5.4-mini` retired 2026-08-31.
 
+**Update 2026-10-19:** the Codex catalog now also lists `gpt-6.1-sol` (the
+default since 0.161.0, 500k context), `gpt-6-sol` and `gpt-6-luna` (below).
+`gpt-reserve` is hidden and is the "Luna Reserve" post-quota fallback, not a
+separate model.
+
+### GPT-6 Luna (added 2026-10-19) — confidence: independent, early
+
+- Released Sept 2026 (OpenRouter: Sept 22) alongside GPT-6 Sol
+  (openai.com/index/introducing-gpt-6-sol-and-luna/). GA in the API and in
+  Codex for Plus and up. Codex catalog: `gpt-6-luna`, efforts low to max,
+  **272k context in Codex** (the API doc says 1.05M; 272k is also the
+  long-prompt pricing threshold).
+- **AA Intelligence Index v4.3.2: 38 at max** (xhigh 35, high 33, medium
+  30), against GPT-5.6 Sol's 47. $0.07 per index task; 140M output tokens
+  across the run.
+- Vendor-reported: DeepSWE v1.1 66.6% at max, which OpenAI calls comparable
+  to Opus 5 / Fable 5 at medium effort at 93–96% lower cost per task;
+  AutomationBench +5.4 pp over GPT-5.6 Luna at high effort.
+- $0.10 / $0.50 per MTok, half of GPT-5.6 Luna's promo price and the same
+  price point as Claude Haiku 5.5.
+- October system card: in max-effort rollouts, 15.9% kept circumventing
+  environment restrictions after a warning (GPT-5.6 Luna: 27%). Better,
+  but run it sandboxed (`-s read-only` / `workspace-write`), not with full
+  access.
+- Fit: the cheap high-volume narrow-pass slot GPT-5.6 Luna held. Starts on
+  full review; the GPT-5.6 Luna record does not transfer.
+
 ---
 
 ### GPT-6 Astra (added 2026-09-20) — the new top model
@@ -861,12 +896,51 @@ should not be trust-downgraded relative to Pro.
 - **Post-Jan-2027 pricing** — the cost case weakens by 2x when the
   introductory discount expires.
 
+> **2026-10-19: the tier below is stale for Flash.** Gemini 3.7 Flash was
+> deprecated 2026-10-08 and requests route to 3.8 Flash, so a "3.7 Flash"
+> lane now runs 3.8 Flash. Use full review on Flash lanes until 3.8 Flash
+> has its own rounds (see the 2026-10-19 subsection below).
+
 **Suggested default review tier:** Light-touch for coding/agentic tasks and
 especially document/spreadsheet analysis on **3.7 Flash**, or hard
 non-coding reasoning on 3.1 Pro. Full adversarial for terminal-heavy or
 computer-use tasks, anything on Flash-Lite involving non-trivial logic,
 multi-agent orchestrated runs, or when quota/infra issues make the actual
 execution path unclear.
+
+### Gemini 3.8 Flash and Gemini 4 Argon (added 2026-10-19)
+
+**Gemini 3.8 Flash** (`gemini-3.8-flash`) — confidence: vendor claims only, no numbers
+- GA 2026-09-02 (Gemini API changelog). Now the default model for the
+  Antigravity agent and SDK. Reports of which Antigravity plans get it
+  conflict (all plans vs Pro/Ultra only). Also in Cursor's catalog.
+- **No benchmark figures published** by Google or found from independents.
+  Google says it may spend more tokens on long, complex tasks by design;
+  lowering the thinking level cuts that.
+- $0.75 / $3.75 per MTok through 2026-12-31, then $1.50 / $7.50. 1M
+  context, 64k output. Thinking levels low / medium (default) / high.
+- API migration breaks old calls: `thinking_budget` becomes
+  `thinking_level`; temperature, top_p and top_k are removed; text before a
+  tool call can trigger Malformed_Function_Call.
+- There is no 3.8 Pro, and "3.8 Flash-Lite" exists only as a TTS model.
+
+**Gemini 4 Argon** (`gemini-4-argon`) — confidence: vendor claims only
+- Google's new flagship reasoning model. Announced around 2026-09-30, GA
+  on the Gemini API (model page updated 2026-10-14). Antigravity rollout
+  from 2026-10-13 for **AI Ultra and eligible Enterprise only** (secondary
+  report). Present in the local `cursor-agent models` list on 2026-10-19.
+- Google's table (single attempt, highest thinking), Argon / GPT-6 Astra /
+  Opus 5.5: DeepSWE v1.1 77.9 / 74.1 / 74.2; FrontierSWE v2 55.0 / 65.5 /
+  62.3; Terminal-Bench 4.0 57.4 / 58.2 / 66.4; AutomationBench 51.3 / 41.4
+  / 42.5; Vals Index 68.9 / 63.1 / 67.0. It leads on repo-scale SWE and
+  automation and trails on terminal and frontier SWE work.
+- AA Intelligence Index 53 (High), index version unconfirmed (secondary).
+  AA-Omniscience hallucination rate 15% (secondary), low if it holds.
+- $2 / $10 per MTok introductory, rising to $4 / $20 around Dec 1 (sources
+  differ on the exact date). 1M context.
+- Fit: a candidate for the Antigravity "Pro" slot (3.1 Pro has been
+  untouched since February), if the user's plan includes it. Full review;
+  no rounds yet.
 
 ---
 
@@ -1064,6 +1138,22 @@ terminal-heavy or hard agentic coding, where 4.7 trails Fable 5.1 and
 Astra by a wide margin. The standing Cursor merge-step duties apply
 whichever Grok ran: browser E2E, the slop ratchet, the dedup scan.
 
+### Other models in Cursor's catalog (out of lane, added 2026-10-19)
+
+The author runs Cursor only for Grok, so these are noted, not profiled.
+Quick-scan numbers on mixed index versions: don't rank them against each
+other or against the tables in this file.
+
+| Model (slug) | Maker | Released | Key number | Price /MTok |
+|---|---|---|---|---|
+| Muse Wonder 1.0 (`muse-wonder-1.0`) | Meta | 2026-10-12 (in Cursor 10-15) | CursorBench 46.1% default effort (Cursor, first-party) | $4 / $20 |
+| Muse Spark 1.3 (`muse-spark-1.3`) | Meta | 2026-09-02 | AA 62 on v4.1.1 (old scale) | $1.25 / $4.25 |
+| Kimi K3 (`kimi-k3`) | Moonshot | July 2026, open weights | AA 44 on v4.3.2 | $3 / $15 |
+| Kimi K2.7 Code (`kimi-k2.7-code`) | Moonshot | about 2026-06-12, open weights | no SWE-bench or Terminal-Bench figure found | sources conflict |
+| GLM-5.2 (`glm-5.2`) | Z.ai | about 2026-06-13, open weights (MIT) | SWE-bench Pro 62.1 (vendor) | not found |
+
+Grok: nothing newer than 4.7 on x.ai/news through 2026-10-19.
+
 ---
 
 ## Claude (the baseline these are measured against)
@@ -1210,6 +1300,31 @@ terminal/automation/document-reasoning work at roughly 40% of Fable 5.1's
 cost per task; Fable 5.1 leads on knowledge work, science, long-context
 recall and reasoning breadth.** Route by which of those a lane actually is,
 not by which model is "better."
+
+### Claude 5.5 family (added 2026-10-19) — confidence: vendor claims plus early independent
+
+Opus 5.5 (2026-09-22), Sonnet 5.5 (2026-09-28) and Haiku 5.5 (2026-10-07),
+all GA on the API, Bedrock, Vertex and Foundry. Opus 5 and Sonnet 5 are now
+legacy.
+
+| | Opus 5.5 | Sonnet 5.5 | Haiku 5.5 |
+|---|---|---|---|
+| Terminal-Bench 4.0 | 66.4% (vendor; Google's Argon table shows the same figure) | 70.6% max (vendor, unverified) / 64% max (AA) | 29% xhigh (AA) |
+| AA Intelligence Index | not found | 56 max, 47 high (version unconfirmed) | 43 default (version unconfirmed) |
+| Other | FrontierCode v1.1 54.4 vs Astra 53.3; GDPval-AA v2.1 1846 vs Astra 1542; Terminal-Bench-Science 58.7 vs Astra 64.6 (all vendor) | SWE-Bench Pro 81.3 (vendor, secondary); AA Coding Agent Index 68 (secondary) | no vendor coding numbers found |
+| Price /MTok | $4 / $20 | $2 / $10 | $0.10 / $0.50 (prompts up to 100K) |
+
+- Anthropic places Opus 5.5 at roughly Fable 5.1's level on most tasks, at
+  well under half Fable 5.1's per-token price, and Sonnet 5.5 within about
+  2 points of Opus 5.5 on coding.
+- If Sonnet 5.5's AA Coding Agent Index 68 is on v4.3.2, it sits above
+  Fable 5.1 and Astra (62) in the table above. Confirm the version before
+  routing on it.
+- Haiku 5.5 uses a newer tokenizer (about 30% more tokens than Haiku 4.5
+  for the same text), so compare cost per task, not per token.
+- For review tiering with Claude as reviewer: Opus 5.5 as finder and
+  Sonnet 5.5 as verifier is now the cheaper equivalent of the earlier
+  Fable/Opus pairing.
 
 ---
 
