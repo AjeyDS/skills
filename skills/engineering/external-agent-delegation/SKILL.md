@@ -1,6 +1,6 @@
 ---
 name: external-agent-delegation
-description: Delegate repo work to parallel external coding agents (Codex CLI, Cursor CLI, Gemini or Antigravity CLI, or others) running outside the main session, and calibrate how hard to review what they return. Use this skill whenever the user says an external agent can pitch in, wants to hand off a doc/task to one, reports a branch landed from one, asks whether an agent is capable of a given task, or wants to split/divide a task across multiple available agents at once. Also use it when the main agent itself calls Codex or Cursor mid-session (codex exec / codex review, the Cursor plugin's cursor-rescue agent or /cursor:* commands, or cursor-agent) for code exploration, a review, a second opinion, a diagnosis, or subagent-style implementation, e.g. "ask codex", "have cursor review this", "get a second opinion from another model". Also use it to decide how thoroughly to review a delegated agent's output, calibrated to the specific model that did the work rather than a blanket full re-check every time.
+description: Delegate repo work to parallel external coding agents (Codex CLI, Cursor CLI, Gemini or Antigravity CLI, or others) and calibrate how hard to review what they return. Use whenever the user says an external agent can pitch in, hands off a doc/task to one, reports a branch landed from one, asks whether an agent can handle a task, or wants to split a task across several agents. Also use when the main agent calls Codex or Cursor mid-session (codex exec / codex review, the Cursor plugin's cursor-rescue agent or /cursor:* commands, cursor-agent) for exploration, review, a second opinion, diagnosis or a bounded implementation slice ("ask codex", "have cursor review this"); when the user wants to refresh model knowledge or asks what coding model just came out ("refresh the models", "is there a newer Grok"); and to pick a review depth matched to the specific model that did the work instead of a blanket full re-check.
 license: MIT
 compatibility: For sessions that run other coding-agent CLIs (Codex CLI, Cursor CLI, Gemini or Antigravity CLI) in parallel or call them in-session. The model notes in references/ are dated field notes; replace them with your own.
 metadata:
@@ -175,10 +175,24 @@ capability depends on the underlying model, which changes over time.
    before full delegation.
 3. Capability claims are time-sensitive: these products swap default
    models every few weeks. If the notes are more than about a month old,
-   say so and offer to re-search before a consequential handoff. Also check
-   the benchmark index version before comparing any two scores: indexes
-   like Artificial Analysis's rescale between versions, so a cross-version
-   comparison is worse than no comparison.
+   say so and offer a model refresh (below) before a consequential handoff.
+   Also check the benchmark index version before comparing any two scores:
+   indexes like Artificial Analysis's rescale between versions, so a
+   cross-version comparison is worse than no comparison.
+
+## Refreshing model knowledge (optional)
+
+When the user asks what's new, names a model the notes don't cover, or a
+CLI's model list shows an unknown slug, a refresh pass can fill the gap,
+even for a model released a few hours ago. Start from the CLIs' own model
+catalogs (`codex debug models`, `cursor-agent models`) to see what is
+actually selectable. Then search each new model in parallel (cheap
+web-search subagents if available): vendor launch posts and changelogs
+first, then independent boards as they catch up. Record the result as a
+dated, confidence-labelled entry in the capability notes. A new model
+starts on full review until it has its own rounds, however good its
+launch numbers look. Sources, search tactics for same-day releases, and
+the comparison rules are in `references/model-refresh.md`.
 
 ## Reference files
 
@@ -188,6 +202,9 @@ capability depends on the underlying model, which changes over time.
   resume, review) and Cursor (plugin + `cursor-agent`) from inside the main
   session, with flags, defaults, and what only the user can invoke. Read it
   before the first in-session call in a session.
+- `references/model-refresh.md`: the optional refresh pass: local model
+  catalogs, where new-model benchmarks appear and how fast, finding
+  same-day releases, and how to weigh and record what comes back.
 - `references/field-notes.md`: the skill author's dated capability notes
   and correction log (Codex, Antigravity, Cursor with Grok, Claude
   baseline) from real delegation rounds in 2026. Useful as a worked example

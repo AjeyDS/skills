@@ -15,7 +15,13 @@
       "strict": false,
       "license": "MIT",
       "category": "development",
-      "keywords": ["code-review", "agents", "delegation", "planning", "ui-ux"],
+      "keywords": [
+        "code-review",
+        "agents",
+        "delegation",
+        "planning",
+        "ui-ux"
+      ],
       "skills": [
         "./skills/engineering/ai-slop-detector",
         "./skills/engineering/bootstrap-system-md",
@@ -33,7 +39,12 @@
       "strict": false,
       "license": "MIT",
       "category": "productivity",
-      "keywords": ["research", "causal-inference", "root-cause", "sources"],
+      "keywords": [
+        "research",
+        "causal-inference",
+        "root-cause",
+        "sources"
+      ],
       "skills": [
         "./skills/research/causal-root-cause-analyst",
         "./skills/research/saving-raw-sources",
@@ -42,15 +53,18 @@
     },
     {
       "name": "learning",
-      "description": "Researched study-note PDFs and rehearsable talk tracks for explaining your own projects.",
+      "description": "Researched, big-picture-first study notes delivered as polished PDFs.",
       "source": "./",
       "strict": false,
       "license": "MIT",
       "category": "productivity",
-      "keywords": ["study-notes", "pdf", "interview-prep", "learning"],
+      "keywords": [
+        "study-notes",
+        "pdf",
+        "learning"
+      ],
       "skills": [
-        "./skills/learning/study-notes-pdf",
-        "./skills/learning/project-talk-track"
+        "./skills/learning/study-notes-pdf"
       ]
     }
   ]

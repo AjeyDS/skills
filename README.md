@@ -37,7 +37,6 @@ the model would not otherwise know, and leave the model free to plan its own way
 | Skill | What it does | Needs |
 |---|---|---|
 | [study-notes-pdf](skills/learning/study-notes-pdf) | Builds a researched, big-picture-first study guide with diagrams and examples, delivered as a polished PDF. | Python + Playwright |
-| [project-talk-track](skills/learning/project-talk-track) | Turns a project repo into a 3-page talk-track PDF in your own voice: walkthrough, pitches at three lengths, and the weak spots an interviewer will push on. | Python + Chrome |
 
 ## Install
 

@@ -7,3 +7,4 @@ dist/
 
 # Private per-user overrides
 *.local.md
+.npm-cache/
