@@ -44,6 +44,15 @@ A plan is only as current as the model that wrote it. Before you build, cheap sc
 the web to test the plan's assumptions, and the main model decides what actually changes.
 [Read the skill →](skills/engineering/freshness-check)
 
+### frankenstein-code
+
+<img src="assets/frankenstein-code.jpg" alt="A robot in a lab coat stitches together a friendly patchwork robot from parts taken out of labeled crates; each stitched part carries a small provenance tag, and rejected parts sit in a bin marked with an X" width="640">
+
+Half of what you want to build probably exists on GitHub already. This skill splits the goal into
+parts, finds open-source code for each one, checks its license and activity, takes only the pieces
+you need, and tags every piece with where it came from.
+[Read the skill →](skills/engineering/frankenstein-code)
+
 ### causal-root-cause-analyst
 
 <img src="assets/causal-root-cause-analyst.jpg" alt="Cross-section of soil under a small plant: most roots are grey and crossed out, one glowing coral root is traced by a robot holding a lantern and a magnifying glass" width="640">
