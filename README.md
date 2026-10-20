@@ -1,6 +1,5 @@
 # skills
 
-[![skills.sh](https://skills.sh/b/AjeyDS/skills)](https://skills.sh/AjeyDS/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 <img src="assets/hero.jpg" alt="Five small robots at a workbench, each picking up a different tool from a shelf: a magnifying glass, a compass, a telescope, a root diagram and a book" width="100%">
